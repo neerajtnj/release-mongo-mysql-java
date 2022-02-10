@@ -23,7 +23,7 @@ public class Driver {
      */
     public static void main(String[] args) throws SQLException {
         // MySql credentials
-        String mysqlUrl="jdbc:mysql://pgc-sd-bigdata.cyaielc9bmnf.us-east-1.rds.amazonaws.com:3306/pgcdata";
+        String mysqlUrl="jdbc:mysql://YOURMYSQLURL";
         String mysqlUserName="student";
         String mysqlPassword="STUDENT123";
         
@@ -41,7 +41,7 @@ public class Driver {
 
          // MongoDB Configurations
             //creating mongo client 
-            mongoClient = MongoClients.create("mongodb://ec2-3-85-55-249.compute-1.amazonaws.com/upgrad");
+            mongoClient = MongoClients.create("mongodb://YOURMONGOURL/test");
             
             //insert into mongodb from mobile tables 
             insertIntoMongoDb(mongoClient,sqlConnection,"Mobiles","select * from mobiles");
@@ -164,7 +164,7 @@ public class Driver {
     public static void insertIntoMongoDb(MongoClient mongoClient,Connection sqlConnection,String catagory,String mysqlQuery)
     {
 
-    	 MongoDatabase productsDatabase = mongoClient.getDatabase("upgrad");
+    	 MongoDatabase productsDatabase = mongoClient.getDatabase("test");
     	 System.out.println("MongoDatabase :"+productsDatabase);
     	 if(productsDatabase.getCollection("products")==null)
     		 productsDatabase.createCollection("products");
